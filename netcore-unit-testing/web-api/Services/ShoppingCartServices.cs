@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using web_api.Contracts;
 using web_api.Model;
 
-namespace web_api.Sevices
+namespace web_api.Services
 {
-    public class ShoppingCartService : IShoppingCartService
+    public class ShoppingCartServices : IShoppingCartService
     {
         public ShoppingItem Add(ShoppingItem newItem)
         {

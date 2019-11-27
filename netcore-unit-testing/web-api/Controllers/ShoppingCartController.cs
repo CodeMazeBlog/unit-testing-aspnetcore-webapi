@@ -17,6 +17,7 @@ namespace web_api.Controllers
             _service = service;
         }
 
+        // GET api/shoppingcart
         [HttpGet]
         public ActionResult<IEnumerable<ShoppingItem>> Get()
         {
@@ -24,6 +25,7 @@ namespace web_api.Controllers
             return Ok(items);
         }
 
+        // GET api/shoppingcart/5
         [HttpGet("{id}")]
         public ActionResult<ShoppingItem> Get(Guid id)
         {
@@ -37,6 +39,7 @@ namespace web_api.Controllers
             return Ok(item);
         }
 
+        // POST api/shoppingcart
         [HttpPost]
         public ActionResult Post([FromBody] ShoppingItem value)
         {
@@ -49,6 +52,7 @@ namespace web_api.Controllers
             return CreatedAtAction("Get", new { id = item.Id }, item);
         }
 
+        // DELETE api/shoppingcart/5
         [HttpDelete("{id}")]
         public ActionResult Remove(Guid id)
         {

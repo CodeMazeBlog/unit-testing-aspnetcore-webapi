@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using Xunit;
+using System.Linq;
+using System.Text;
+using web_api.Contracts;
 using web_api.Controllers;
 using web_api.Model;
-using web_api.Contracts;
-using System.Linq;
+using Xunit;
 
 namespace web_api_tests
 {
