@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using web_api.Model;
+﻿using web_api.Model;
 
 namespace web_api.Contracts
 {
-    public interface IShoppingCartService
+	public interface IShoppingCartService
     {
         IEnumerable<ShoppingItem> GetAllItems();
         ShoppingItem Add(ShoppingItem newItem);

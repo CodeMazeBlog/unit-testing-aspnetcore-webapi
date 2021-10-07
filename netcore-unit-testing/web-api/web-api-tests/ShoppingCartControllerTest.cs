@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using web_api.Contracts;
 using web_api.Controllers;
 using web_api.Model;
@@ -12,8 +11,8 @@ namespace web_api_tests
 {
     public class ShoppingCartControllerTest
     {
-        ShoppingCartController _controller;
-        IShoppingCartService _service;
+        private readonly ShoppingCartController _controller;
+        private readonly IShoppingCartService _service;
 
         public ShoppingCartControllerTest()
         {
@@ -28,14 +27,14 @@ namespace web_api_tests
             var okResult = _controller.Get();
 
             // Assert
-            Assert.IsType<OkObjectResult>(okResult.Result);
+            Assert.IsType<OkObjectResult>(okResult as OkObjectResult);
         }
 
         [Fact]
         public void Get_WhenCalled_ReturnsAllItems()
         {
             // Act
-            var okResult = _controller.Get().Result as OkObjectResult;
+            var okResult = _controller.Get() as OkObjectResult;
 
             // Assert
             var items = Assert.IsType<List<ShoppingItem>>(okResult.Value);
@@ -49,7 +48,7 @@ namespace web_api_tests
             var notFoundResult = _controller.Get(Guid.NewGuid());
 
             // Assert
-            Assert.IsType<NotFoundResult>(notFoundResult.Result);
+            Assert.IsType<NotFoundResult>(notFoundResult);
         }
 
         [Fact]
@@ -62,7 +61,7 @@ namespace web_api_tests
             var okResult = _controller.Get(testGuid);
 
             // Assert
-            Assert.IsType<OkObjectResult>(okResult.Result);
+            Assert.IsType<OkObjectResult>(okResult as OkObjectResult);
         }
 
         [Fact]
@@ -72,7 +71,7 @@ namespace web_api_tests
             var testGuid = new Guid("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200");
 
             // Act
-            var okResult = _controller.Get(testGuid).Result as OkObjectResult;
+            var okResult = _controller.Get(testGuid) as OkObjectResult;
 
             // Assert
             Assert.IsType<ShoppingItem>(okResult.Value);
@@ -97,7 +96,6 @@ namespace web_api_tests
             Assert.IsType<BadRequestObjectResult>(badResponse);
         }
 
-
         [Fact]
         public void Add_ValidObjectPassed_ReturnsCreatedResponse()
         {
@@ -115,7 +113,6 @@ namespace web_api_tests
             // Assert
             Assert.IsType<CreatedAtActionResult>(createdResponse);
         }
-
 
         [Fact]
         public void Add_ValidObjectPassed_ReturnedResponseHasCreatedItem()
@@ -151,16 +148,16 @@ namespace web_api_tests
         }
 
         [Fact]
-        public void Remove_ExistingGuidPassed_ReturnsOkResult()
+        public void Remove_ExistingGuidPassed_ReturnsNoContentResult()
         {
             // Arrange
             var existingGuid = new Guid("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200");
 
             // Act
-            var okResponse = _controller.Remove(existingGuid);
+            var noContentResponse = _controller.Remove(existingGuid);
 
             // Assert
-            Assert.IsType<OkResult>(okResponse);
+            Assert.IsType<NoContentResult>(noContentResponse);
         }
 
         [Fact]

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using web_api.Contracts;
 using web_api.Model;
 
 namespace web_api_tests
 {
-    public class ShoppingCartServiceFake : IShoppingCartService
+	public class ShoppingCartServiceFake : IShoppingCartService
     {
         private readonly List<ShoppingItem> _shoppingCart;
 
