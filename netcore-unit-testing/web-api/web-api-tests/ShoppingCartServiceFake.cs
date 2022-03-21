@@ -37,8 +37,7 @@ namespace web_api_tests
 
         public ShoppingItem GetById(Guid id)
         {
-            return _shoppingCart.Where(a => a.Id == id)
-                .FirstOrDefault();
+            return _shoppingCart.Where(a => a.Id == id).FirstOrDefault();
         }
 
         public void Remove(Guid id)

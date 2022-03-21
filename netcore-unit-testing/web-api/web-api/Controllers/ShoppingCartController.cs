@@ -18,6 +18,7 @@ namespace web_api.Controllers
         public IActionResult Get()
         {
             var items = _service.GetAllItems();
+            Console.WriteLine("HELLO GET");
             return Ok(items);
         }
 
